@@ -1,0 +1,19 @@
+{
+  "name": "bibliotech-backend",
+  "version": "1.0.0",
+  "description": "O BiblioTech é um sistema de gerenciamento de bibliotecas desenvolvido com Java (Spring Boot) no backend e Angular no frontend. O objetivo do projeto é facilitar o cadastro de livros, autores, clientes e empréstimos, além de fornecer funcionalidades avançadas como notificações e consultas personalizadas.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "conventional-changelog": "^6.0.0",
+    "conventional-changelog-cli": "^5.0.0"
+  },
+  "dependencies": {
+    "bibliotech-backend": "file:"
+  }
+}
