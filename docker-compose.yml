@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  db: #configura o container do banco de dados
+    image: postgres:latest #imagem do postgres
+    container_name: bibliotech-db
+    environment: #define usuário, senha e banco de dados
+      POSTGRES_USER: seu_usuario
+      POSTGRES_PASSWORD: sua_senha
+      POSTGRES_DB: bibliotech
+    ports:
+      - "5432:5432"
+    volumes:
+      - bibliotech-data:/var/lib/postgresql/data
+
+  backend: #configura o container do backend
+    build:
+      context: ./bibliotech_backend
+      dockerfile: Dockerfile #caminho para a pasta backend
+    container_name: bibliotech-backend
+    depends_on: #garante que o container do banco de dados seja iniciado antes do backend
+      - db
+    environment: #define usuário, senha e banco de dados
+      SPRING_DATASOURCE_URL: ${DB_URL}
+      SPRING_DATASOURCE_USERNAME: ${DB_USERNAME}
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "8888:8888"
+
+volumes:
+  bibliotech-data:
