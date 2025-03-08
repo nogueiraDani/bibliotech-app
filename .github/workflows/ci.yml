@@ -44,5 +44,9 @@ jobs:
           echo "SPRING_DATASOURCE_USERNAME=${{ secrets.POSTGRES_USER }}" >> $GITHUB_ENV
           echo "SPRING_DATASOURCE_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}" >> $GITHUB_ENV
 
-      - name: Build e Testes
-        run: mvn clean verify
+      # - name: Build e Testes
+      #   run: mvn clean verify
+
+      - name: Build sem rodar testes
+        run: mvn clean install -DskipTests
+

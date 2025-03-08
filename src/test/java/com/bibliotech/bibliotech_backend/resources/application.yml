@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/bibliotech_test}
+    username: ${SPRING_DATASOURCE_USERNAME:DB_USER}
+    password: ${SPRING_DATASOURCE_PASSWORD:DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+  test:
+    database:
+      replace: none
+
