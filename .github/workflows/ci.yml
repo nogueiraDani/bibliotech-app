@@ -12,6 +12,21 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     steps:
       - name: Checkout do código
         uses: actions/checkout@v4
@@ -19,9 +34,15 @@ jobs:
       - name: Configurar JDK 23
         uses: actions/setup-java@v3
         with:
-          distribution: 'oracle' # Java 23 está disponível na versão da Oracle
-          java-version: '23'
+          distribution: "oracle" # Java 23 está disponível na versão da Oracle
+          java-version: "23"
           cache: maven
+
+      - name: Configurar variáveis de ambiente
+        run: |
+          echo "SPRING_DATASOURCE_URL=${{ secrets.POSTGRES_URL }}" >> $GITHUB_ENV
+          echo "SPRING_DATASOURCE_USERNAME=${{ secrets.POSTGRES_USER }}" >> $GITHUB_ENV
+          echo "SPRING_DATASOURCE_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}" >> $GITHUB_ENV
 
       - name: Build e Testes
         run: mvn clean verify
