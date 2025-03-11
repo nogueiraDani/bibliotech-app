@@ -88,12 +88,12 @@ bibliotech-backend/
 │   │   ├── java/
 │   │   │   └── com/
 │   │   │       └── bibliotech/
+│   │   │           ├── config/
 │   │   │           ├── controller/
-│   │   │           ├── service/
-│   │   │           ├── repository/
-│   │   │           ├── entity/
 │   │   │           ├── dto/
-│   │   │           └── config/
+│   │   │           ├── entity/
+│   │   │           ├── repository/
+│   │   │           └── service/
 │   │   └── resources/
 │   │       ├── application.yml
 │   │       └── db/migration/
