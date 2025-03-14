@@ -1,5 +1,6 @@
 # Usa uma imagem base com Java 21 e Maven
-FROM maven:3.9.9-openjdk-23 AS build
+# FROM maven:3.9.9-openjdk-23 AS build
+FROM maven:3.9.6-eclipse-temurin-21 AS builder
 
 # Define o diretório de trabalho dentro do container
 WORKDIR /app
