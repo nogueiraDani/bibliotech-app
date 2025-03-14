@@ -16,7 +16,7 @@ O **BiblioTech** está em desenvolvimento ativo. Abaixo está o progresso atual:
 - [ ] Gerenciamento de Empréstimos.
 - [ ] Integração com RabbitMQ para notificações.
 - [ ] Autenticação e autorização com OAuth2 e JWT.
-- [ ] Documentação da API com Swagger/OpenAPI.
+- [x] Documentação da API com Swagger/OpenAPI.
 
 ### 🖥️ Frontend
 - [x] Configuração inicial do Angular.
@@ -27,7 +27,7 @@ O **BiblioTech** está em desenvolvimento ativo. Abaixo está o progresso atual:
 ### ⚙️ Infraestrutura
 - [x] Configuração do Docker para containerização do backend.
 - [ ] Configuração do Kubernetes para orquestração de containers.
-- [ ] Configuração do CI/CD com GitHub Actions.
+- [x] Configuração do CI/CD com GitHub Actions.
 - [ ] Configuração do monitoramento com Prometheus e Grafana.
 
 ### ⏳ Próximos Passos
