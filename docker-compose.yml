@@ -3,9 +3,9 @@ services:
     image: postgres:latest #imagem do postgres
     container_name: bibliotech-db
     environment: #define usuário, senha e banco de dados
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 12345
-      POSTGRES_DB: bibliotech
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
     ports:
       - "5432:5432"
     volumes:
@@ -15,13 +15,13 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile #caminho para a pasta backend
-    container_name: bibliotech-app # TODO: ta com erro aqui no docker-compose ou na localização do dockerfile
+    container_name: bibliotech-app
     depends_on: #garante que o container do banco de dados seja iniciado antes do backend
       - db
     environment: #define usuário, senha e banco de dados
-      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/bibliotech
-      SPRING_DATASOURCE_USERNAME: postgres
-      SPRING_DATASOURCE_PASSWORD: 12345
+      SPRING_DATASOURCE_URL: ${DB_URL}
+      SPRING_DATASOURCE_USERNAME: ${DB_USER}
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
     ports:
       - "8888:8888"
 
@@ -36,6 +36,9 @@ services:
       - "--config.file=/etc/prometheus/prometheus.yml"
     networks:
       - monitoring
+    depends_on:
+    - db  # Depende do serviço do banco de dados
+    - backend  # Depende do serviço do backend
 
   grafana:
     image: grafana/grafana:latest
@@ -53,3 +56,4 @@ networks:
 
 volumes:
   bibliotech-data:
+  grafana-storage:
