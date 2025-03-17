@@ -28,7 +28,7 @@ O **BiblioTech** está em desenvolvimento ativo. Abaixo está o progresso atual:
 - [x] Configuração do Docker para containerização do backend.
 - [ ] Configuração do Kubernetes para orquestração de containers.
 - [x] Configuração do CI/CD com GitHub Actions.
-- [ ] Configuração do monitoramento com Prometheus e Grafana.
+- [x] Configuração do monitoramento com Prometheus e Grafana.
 
 ### ⏳ Próximos Passos
 1. Implementar o CRUD de Livros, Autores e Clientes no backend.
