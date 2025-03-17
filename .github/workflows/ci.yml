@@ -31,11 +31,11 @@ jobs:
       - name: Checkout do código
         uses: actions/checkout@v4
 
-      - name: Configurar JDK 23
+      - name: Configurar JDK 21
         uses: actions/setup-java@v3
         with:
-          distribution: "oracle" # Java 23 está disponível na versão da Oracle
-          java-version: "23"
+          distribution: "temurin" # Java 21 está disponível na versão da Temurin
+          java-version: "21"
           cache: maven
 
       - name: Configurar variáveis de ambiente
@@ -49,4 +49,12 @@ jobs:
 
       # - name: Build sem rodar testes
       #   run: mvn clean install -DskipTests
+
+      # (Opcional) Passo para publicar o artefato (JAR)
+      - name: Publicar artefato
+        if: success()
+        uses: actions/upload-artifact@v3
+        with:
+          name: target
+          path: target/*.jar
 
